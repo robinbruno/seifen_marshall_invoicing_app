@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @accountant %>
+
+<div>
+  <%= link_to "Edit this accountant", edit_accountant_path(@accountant) %> |
+  <%= link_to "Back to accountants", accountants_path %>
+
+  <%= button_to "Destroy this accountant", @accountant, method: :delete %>
+</div>

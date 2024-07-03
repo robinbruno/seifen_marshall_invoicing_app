@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  invoice_number: MyString
+  amount: 9.99
+  payment_method: MyString
+  invoice_date: 2024-07-03
+
+two:
+  client: two
+  invoice_number: MyString
+  amount: 9.99
+  payment_method: MyString
+  invoice_date: 2024-07-03

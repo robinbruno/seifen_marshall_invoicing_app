@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fixed_expense %>
+
+<div>
+  <%= link_to "Edit this fixed expense", edit_fixed_expense_path(@fixed_expense) %> |
+  <%= link_to "Back to fixed expenses", fixed_expenses_path %>
+
+  <%= button_to "Destroy this fixed expense", @fixed_expense, method: :delete %>
+</div>

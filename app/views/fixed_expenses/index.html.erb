@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Fixed expenses</h1>
+
+<div id="fixed_expenses">
+  <% @fixed_expenses.each do |fixed_expense| %>
+    <%= render fixed_expense %>
+    <p>
+      <%= link_to "Show this fixed expense", fixed_expense %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New fixed expense", new_fixed_expense_path %>
