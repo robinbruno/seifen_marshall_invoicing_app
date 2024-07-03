@@ -66,4 +66,12 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+# Install WickedPDF for PDF generation
+gem 'wicked_pdf', '~> 2.8.0'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.7'
+
+# Add authentication
+gem 'devise'
+
 end
