@@ -1,33 +1,46 @@
-<div id="<%= dom_id invoice %>">
+<!-- app/views/invoices/show.html.erb -->
+<div class="d-flex justify-content-center mt-5">
+  <div class="card p-4" style="width: 800px;">
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          <strong>Name Client:</strong>
+          <%= invoice.client.name %>
+        </p>
 
-  <p>
-    <strong>Name Client:</strong>
-    <%= invoice.client.name %>
-  </p>
+        <p>
+          <strong>ID Client:</strong>
+          <%= invoice.client_id %>
+        </p>
+      </div>
 
-  <p>
-    <strong>ID Client:</strong>
-    <%= invoice.client_id %>
-  </p>
+      <div class="col-md-6">
+        <p>
+          <strong>Invoice number:</strong>
+          <%= invoice.invoice_number %>
+        </p>
 
-  <p>
-    <strong>Invoice number:</strong>
-    <%= invoice.invoice_number %>
-  </p>
+        <p>
+          <strong>Amount:</strong>
+          <%= invoice.amount %>
+        </p>
+      </div>
+    </div>
 
-  <p>
-    <strong>Amount:</strong>
-    <%= invoice.amount %>
-  </p>
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <p>
+          <strong>Payment method:</strong>
+          <%= invoice.payment_method %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Payment method:</strong>
-    <%= invoice.payment_method %>
-  </p>
-
-  <p>
-    <strong>Invoice date:</strong>
-    <%= invoice.invoice_date %>
-  </p>
-
+      <div class="col-md-6">
+        <p>
+          <strong>Invoice date:</strong>
+          <%= invoice.invoice_date %>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
