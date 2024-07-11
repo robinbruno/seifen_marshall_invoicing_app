@@ -1,6 +1,12 @@
 <div id="<%= dom_id invoice %>">
+
   <p>
-    <strong>Client:</strong>
+    <strong>Name Client:</strong>
+    <%= invoice.client.name %>
+  </p>
+
+  <p>
+    <strong>ID Client:</strong>
     <%= invoice.client_id %>
   </p>
 

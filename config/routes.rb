@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
+  get 'home/index'
   devise_for :users
   resources :accountants
   resources :expenses
-  resources :invoices
+  resources :invoices do
+    collection do
+      get 'last_invoice_amount'
+    end
+  end
   resources :clients
   resources :fixed_expenses
   resources :users, only: [:index, :show, :new, :create]
+
+  root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
