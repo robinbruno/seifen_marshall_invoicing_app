@@ -1,4 +1,9 @@
-<h1>Editing client</h1>
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="card text-center p-4" style="width: 800px;">
+    <h1 class="display-4 text-primary">Editing Client</h1>
+  </div>
+</div>
+
 
 <%= render "form", client: @client %>
 
@@ -6,5 +11,6 @@
 
 <div>
   <%= link_to "Show this client", @client %> |
-  <%= link_to "Back to clients", clients_path %>
+  <%= link_to "Back to clients", clients_path %> |
+  <%= link_to 'Back to Home', root_path %>
 </div>

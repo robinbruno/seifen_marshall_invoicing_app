@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Clients</h1>
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="card text-center p-4" style="width: 800px;">
+    <h1 class="display-4 text-primary">Clients</h1>
+  </div>
+</div>
 
 <div id="clients">
   <% @clients.each do |client| %>
@@ -11,4 +15,5 @@
   <% end %>
 </div>
 
-<%= link_to "New client", new_client_path %>
+<%= link_to "New client", new_client_path %> |
+  <%= link_to 'Back to Home', root_path %>

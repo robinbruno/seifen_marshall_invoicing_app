@@ -7,6 +7,9 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+gem "bootstrap", "~> 5.2"
+gem "font-awesome-sass", "~> 6.1"
+gem "simple_form"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -73,5 +76,8 @@ gem 'wkhtmltopdf-binary', '~> 0.12.6.7'
 
 # Add authentication
 gem 'devise'
+
+gem "sassc-rails"
+gem "autoprefixer-rails"
 
 end

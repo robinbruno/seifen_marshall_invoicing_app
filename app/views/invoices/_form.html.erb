@@ -1,46 +1,51 @@
-<!-- app/views/invoices/_form.html.erb -->
-<%= form_with(model: @invoice, local: true) do |form| %>
-  <% if @invoice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
-      <ul>
-        <% @invoice.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="card p-4" style="width: 500px;">
+    <%= form_with(model: @invoice, local: true) do |form| %>
+      <% if @invoice.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+          <ul>
+            <% @invoice.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :client_id %>
-    <%= form.collection_select :client_id, @clients, :id, :name, prompt: "Select Client" %>
-    <%= link_to 'New Client', new_client_path, target: "_blank" %>
-  </div>
+      <div class="form-group">
+        <%= form.label :client_id %>
+        <div class="d-flex align-items-center">
+          <%= form.collection_select :client_id, @clients, :id, :name, prompt: "Select Client", class: 'form-control mr-2' %>
+          <%= link_to 'New Client', new_client_path, target: "_blank", class: 'btn btn-primary' %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :invoice_number %>
-    <%= form.text_field :invoice_number %>
-  </div>
+      <div class="form-group">
+        <%= form.label :invoice_number %>
+        <%= form.text_field :invoice_number, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.number_field :amount, value: @last_invoice_amount %>
-  </div>
+      <div class="form-group">
+        <%= form.label :amount %>
+        <%= form.number_field :amount, value: @last_invoice_amount, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :payment_method %>
-    <%= form.select :payment_method, options_for_select([['Überweisung', 'Überweisung'], ['Bar', 'Bar']]) %>
-  </div>
+      <div class="form-group">
+        <%= form.label :payment_method %>
+        <%= form.select :payment_method, options_for_select([['Überweisung', 'Überweisung'], ['Bar', 'Bar']]), class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :invoice_date %>
-    <%= form.date_select :invoice_date %>
-  </div>
+      <div class="form-group">
+        <%= form.label :invoice_date %>
+        <%= form.date_select :invoice_date, class: 'form-control' %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="actions d-flex justify-content-center">
+        <%= form.submit class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
 <script>
   function fetchLastInvoiceAmount() {
