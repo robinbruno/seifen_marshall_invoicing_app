@@ -4,6 +4,7 @@ class InvoicesController < ApplicationController
   # GET /invoices or /invoices.json
   def index
     @invoices = Invoice.all
+    @clients = Client.all
   end
 
   # GET /invoices/1 or /invoices/1.json
@@ -13,6 +14,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
+    @clients = Client.all # To populate a dropdown or selection list of clients
   end
 
   # GET /invoices/1/edit
@@ -34,7 +36,14 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /invoices/1 or /invoices/1.json
+  def last_invoice_amount
+    client = Client.find(params[:client_id])
+    last_invoice = client.invoices.order(created_at: :desc).first
+    amount = last_invoice&.amount || 0
+    render json: { amount: amount }
+  end
+
+  # PATCH/PUT /invoices/1 or /invoices/ 1.json
   def update
     respond_to do |format|
       if @invoice.update(invoice_params)

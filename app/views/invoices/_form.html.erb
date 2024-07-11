@@ -1,42 +1,66 @@
-<%= form_with(model: invoice) do |form| %>
-  <% if invoice.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
-
+<!-- app/views/invoices/_form.html.erb -->
+<%= form_with(model: @invoice, local: true) do |form| %>
+  <% if @invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
       <ul>
-        <% invoice.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @invoice.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :client_id, style: "display: block" %>
-    <%= form.text_field :client_id %>
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, @clients, :id, :name, prompt: "Select Client" %>
+    <%= link_to 'New Client', new_client_path, target: "_blank" %>
   </div>
 
-  <div>
-    <%= form.label :invoice_number, style: "display: block" %>
+  <div class="field">
+    <%= form.label :invoice_number %>
     <%= form.text_field :invoice_number %>
   </div>
 
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, value: @last_invoice_amount %>
   </div>
 
-  <div>
-    <%= form.label :payment_method, style: "display: block" %>
-    <%= form.text_field :payment_method %>
+  <div class="field">
+    <%= form.label :payment_method %>
+    <%= form.select :payment_method, options_for_select([['Überweisung', 'Überweisung'], ['Bar', 'Bar']]) %>
   </div>
 
-  <div>
-    <%= form.label :invoice_date, style: "display: block" %>
-    <%= form.date_field :invoice_date %>
+  <div class="field">
+    <%= form.label :invoice_date %>
+    <%= form.date_select :invoice_date %>
   </div>
 
-  <div>
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  function fetchLastInvoiceAmount() {
+    var clientId = document.getElementById('invoice_client_id').value;
+    console.log('Selected client ID:', clientId);
+    if (clientId) {
+      fetch(`/invoices/last_invoice_amount?client_id=${clientId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Fetched data:', data);
+          document.getElementById('invoice_amount').value = data.amount;
+        })
+        .catch(error => {
+          console.error('Error fetching last invoice amount:', error);
+        });
+    }
+  }
+</script>
