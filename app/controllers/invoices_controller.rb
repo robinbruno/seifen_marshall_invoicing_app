@@ -9,7 +9,19 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/1 or /invoices/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name",
+               template: "invoices/show.html.erb",
+               handler: "erb",
+               layout: "pdf.html",
+               locals: { invoice: @invoice },
+               format: :pdf
+      end
+    end
   end
+
 
   # GET /invoices/new
   def new

@@ -1,14 +1,12 @@
-<div class="d-flex justify-content-center align-items-center mt-5">
-  <div class="card text-center p-4" style="width: 800px;">
-    <h1 class="display-4 text-primary">New invoice</h1>
+<div class="new-invoice-container d-flex flex-column align-items-center justify-content-center">
+  <div class="new-invoice-card text-center p-5">
+    <h1 class="new-invoice-title">New Invoice</h1>
   </div>
-</div>
 
-<%= render "form", invoice: @invoice %>
+  <%= render "form", invoice: @invoice %>
 
-<br>
-
-<div>
-  <%= link_to "Back to invoices", invoices_path %> |
-  <%= link_to 'Back to Home', root_path %>
+  <div class="d-flex justify-content-center mt-4">
+    <%= link_to "Back to invoices", invoices_path, class: 'btn btn-success mr-2 mx-4' %>
+    <%= link_to 'Back to Home', root_path, class: 'btn btn-outline-secondary mx-1' %>
+  </div>
 </div>

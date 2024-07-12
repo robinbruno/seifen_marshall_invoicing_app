@@ -1,14 +1,12 @@
-<div class="d-flex justify-content-center align-items-center mt-5">
-  <div class="card text-center p-4" style="width: 800px;">
-    <h1 class="display-4 text-primary">New Client</h1>
+<div class="new-client-container d-flex flex-column align-items-center justify-content-center">
+  <div class="new-client-card text-center p-5">
+    <h1 class="new-client-title">New Client</h1>
   </div>
-</div>
 
-<%= render "form", client: @client %>
+  <%= render "form", client: @client %>
 
-<br>
-
-<div>
-  <%= link_to "Back to clients", clients_path %> |
-  <%= link_to 'Back to Home', root_path %>
+  <div class="d-flex justify-content-center mt-4">
+    <%= link_to "Back to clients", clients_path, class: 'btn btn-success mr-2 mx-4' %>
+    <%= link_to 'Back to Home', root_path, class: 'btn btn-outline-secondary mx-1' %>
+  </div>
 </div>
