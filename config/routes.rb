@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   resources :clients
   resources :fixed_expenses
   resources :users, only: [:index, :show, :new, :create]
+  resources :reporting, only: [:index] do
+    collection do
+      get :monthly_report
+      get :quarterly_report
+      get :yearly_report
+    end
+  end
 
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

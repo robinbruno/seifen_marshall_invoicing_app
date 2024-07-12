@@ -324,8 +324,8 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
-  wicked_pdf (~> 2.8.0)
-  wkhtmltopdf-binary (~> 0.12.6.7)
+  wicked_pdf
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 3.1.2p20

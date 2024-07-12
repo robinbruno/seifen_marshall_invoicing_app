@@ -1,20 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<div class="invoices-container d-flex flex-column align-items-center justify-content-center">
+  <p style="color: green"><%= notice %></p>
 
-<div class="d-flex justify-content-center align-items-center mt-5">
-  <div class="card text-center p-4" style="width: 800px;">
-    <h1 class="display-4 text-primary">Invoices</h1>
+  <div class="invoices-card text-center p-5">
+    <h1 class="invoices-title">Invoices</h1>
+  </div>
+
+  <div id="invoices">
+    <% @invoices.each do |invoice| %>
+      <%= render invoice %>
+      <p>
+        <%= link_to "Show this invoice", invoice %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <%= link_to "New invoice", new_invoice_path, class: 'btn btn-success mr-2 mx-4' %>
+    <%= link_to 'Back to Home', root_path, class: 'btn btn-outline-secondary mx-1' %>
   </div>
 </div>
-
-
-<div id="invoices">
-  <% @invoices.each do |invoice| %>
-    <%= render invoice %>
-    <p>
-      <%= link_to "Show this invoice", invoice %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New invoice", new_invoice_path %> |
-  <%= link_to 'Back to Home', root_path %>

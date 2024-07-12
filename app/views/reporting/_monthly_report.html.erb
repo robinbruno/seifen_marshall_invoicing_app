@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-4">
+    <%= form_with(url: monthly_report_reporting_index_path, method: "get") do |form| %>
+      <%= form.select(:month, options_for_select(@months), {include_blank: "Select a month"}, class: "form-control mb-3") %>
+      <%= form.select(:year, options_for_select(@years), {include_blank: "Select a year"}, class: "form-control mb-3") %>
+      <%= form.submit "Generate Report", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Invoice Number</th>
+          <th>Client</th>
+          <th>Amount</th>
+          <th>Payment Method</th>
+          <th>Invoice Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoices.each do |invoice| %>
+          <% if invoice.invoice_date.strftime("%B %Y") == Date.new(form_params[:year].to_i, form_params[:month].to_i, 1).strftime("%B %Y") %>
+            <tr>
+              <td><%= invoice.invoice_number %></td>
+              <td><%= invoice.client.name %></td>
+              <td><%= invoice.amount %></td>
+              <td><%= invoice.payment_method %></td>
+              <td><%= invoice.invoice_date.strftime("%d/%m/%Y") %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
