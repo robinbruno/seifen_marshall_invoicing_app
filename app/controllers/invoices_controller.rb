@@ -12,7 +12,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "file_name",
+        render pdf: "invoice_#{@invoice.id}", #"file_name",
                template: "invoices/show.html.erb",
                handler: "erb",
                layout: "pdf.html",
